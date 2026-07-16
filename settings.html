@@ -87,68 +87,46 @@ placeholder="输入你的API Key">
 <script>
 
 function save(){
-function save(){
 
-localStorage.setItem(
-"api",
-document.getElementById("api").value
-);
+    let api = document.getElementById("api").value;
+    let model = document.getElementById("model").value;
+    let key = document.getElementById("key").value;
 
 
-localStorage.setItem(
-"model",
-document.getElementById("model").value
-);
+    localStorage.setItem("api", api);
+    localStorage.setItem("model", model);
+    localStorage.setItem("key", key);
 
 
-localStorage.setItem(
-"key",
-document.getElementById("key").value
-);
+    alert("保存成功");
 
-
-alert("保存成功");
 
 }
 
 
-
-//打开页面自动读取
 
 window.onload=function(){
 
-
-let api=localStorage.getItem("api");
-
-let model=localStorage.getItem("model");
-
-let key=localStorage.getItem("key");
+    let api = localStorage.getItem("api");
+    let model = localStorage.getItem("model");
+    let key = localStorage.getItem("key");
 
 
-
-if(api){
-
-document.getElementById("api").value=api;
-
-}
+    if(api){
+        document.getElementById("api").value = api;
+    }
 
 
-if(model){
-
-document.getElementById("model").value=model;
-
-}
+    if(model){
+        document.getElementById("model").value = model;
+    }
 
 
-if(key){
-
-document.getElementById("key").value=key;
+    if(key){
+        document.getElementById("key").value = key;
+    }
 
 }
-
-
-}
-
 </script>
 
 
