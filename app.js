@@ -1,71 +1,104 @@
 async function sendMessage(){
 
+    let input=document.querySelector(".input input");
 
-let input=document.querySelector(".input input");
+    let text=input.value.trim();
 
-let text=input.value.trim();
+    if(text===""){
+        return;
+    }
 
 
-if(text===""){
-    return;
+    let chat=document.querySelector(".chat");
+
+
+    //显示用户消息
+    let user=document.createElement("div");
+    user.className="msg user";
+    user.innerText=text;
+    chat.appendChild(user);
+
+
+    input.value="";
+
+
+    //读取设置
+    let api=localStorage.getItem("api");
+    let model=localStorage.getItem("model");
+
+
+    if(!api || !model){
+
+        let ai=document.createElement("div");
+        ai.className="msg ai";
+        ai.innerText="请先在设置里填写API和模型";
+        chat.appendChild(ai);
+        return;
+
+    }
+
+
+
+    let ai=document.createElement("div");
+    ai.className="msg ai";
+    ai.innerText="正在思考...";
+    chat.appendChild(ai);
+
+
+
+    try{
+
+        let res=await fetch(
+            "你的API地址/v1/chat/completions",
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json",
+                    "Authorization":"Bearer "+api
+                },
+
+
+                body:JSON.stringify({
+
+                    model:model,
+
+                    messages:[
+
+                        {
+                            role:"system",
+                            content:"你是林晚，一个温柔的聊天角色。"
+                        },
+
+                        {
+                            role:"user",
+                            content:text
+                        }
+
+                    ]
+
+                })
+
+            }
+        );
+
+
+        let data=await res.json();
+
+
+        ai.innerText=
+        data.choices[0].message.content;
+
+
+    }catch(e){
+
+        ai.innerText=
+        "连接失败："+e.message;
+
+    }
+
+
 }
-
-
-let chat=document.querySelector(".chat");
-
-
-// 用户消息
-
-let user=document.createElement("div");
-
-user.className="msg user";
-
-user.innerText=text;
-
-chat.appendChild(user);
-
-
-input.value="";
-
-
-// 滚动到底部
-
-chat.scrollTop=chat.scrollHeight;
-
-
-
-// 先测试回复
-
-let ai=document.createElement("div");
-
-ai.className="msg ai";
-
-ai.innerText="收到：" + text;
-
-chat.appendChild(ai);
-
-
-
-chat.scrollTop=chat.scrollHeight;
-
-
-}
-let key=localStorage.getItem("key");
-
-let model=localStorage.getItem("model");
-
-
-
-if(!api || !key || !model){
-
-let ai=document.createElement("div");
-
-ai.className="msg ai";
-
-ai.innerText="请先在设置页面填写API信息哦 ❤️";
-
-chat.appendChild(ai);
-
 return;
 
 }
