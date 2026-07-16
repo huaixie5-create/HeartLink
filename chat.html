@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HeartLink Chat</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#f5f5f5;
+    font-family:"Microsoft YaHei",Arial;
+}
+
+
+.phone{
+    max-width:420px;
+    height:100vh;
+    margin:auto;
+    background:white;
+    display:flex;
+    flex-direction:column;
+}
+
+
+/* 顶部 */
+
+.header{
+
+    padding:15px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    border-bottom:1px solid #eee;
+
+}
+
+
+/* 消息区域 */
+
+.chat{
+
+    flex:1;
+    padding:15px;
+    overflow:auto;
+
+}
+
+
+.msg{
+
+    margin:12px 0;
+    max-width:75%;
+    padding:12px;
+    border-radius:15px;
+    line-height:1.5;
+
+}
+
+
+.ai{
+
+    background:#eeeeee;
+    margin-right:auto;
+
+}
+
+
+.user{
+
+    background:#95ec69;
+    margin-left:auto;
+
+}
+
+
+/* 输入 */
+
+.input{
+
+    display:flex;
+    padding:10px;
+    border-top:1px solid #eee;
+
+}
+
+
+.input input{
+
+    flex:1;
+    padding:12px;
+    border-radius:20px;
+    border:1px solid #ddd;
+
+}
+
+
+.input button{
+
+    margin-left:8px;
+    border:0;
+    background:#07c160;
+    color:white;
+    border-radius:20px;
+    padding:0 18px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="phone">
+
+
+<div class="header">
+
+❤️ 林晚
+
+</div>
+
+
+
+<div class="chat">
+
+
+<div class="msg ai">
+
+今天辛苦啦，回来了吗？
+
+</div>
+
+
+
+<div class="msg user">
+
+嗯，刚下班。
+
+</div>
+
+
+
+<div class="msg ai">
+
+那就好好休息一下吧，我陪你聊聊天。
+
+</div>
+
+
+</div>
+
+
+
+<div class="input">
+
+<input placeholder="输入消息...">
+
+<button>
+
+发送
+
+</button>
+
+</div>
+
+
+
+</div>
+
+
+</body>
+
+</html>
