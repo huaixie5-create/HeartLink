@@ -11,12 +11,10 @@ if(text===""){
 }
 
 
-
 let chat=document.querySelector(".chat");
 
 
-
-//显示用户消息
+// 用户消息
 
 let user=document.createElement("div");
 
@@ -30,11 +28,28 @@ chat.appendChild(user);
 input.value="";
 
 
+// 滚动到底部
 
-//读取设置
+chat.scrollTop=chat.scrollHeight;
 
-let api=localStorage.getItem("api");
 
+
+// 先测试回复
+
+let ai=document.createElement("div");
+
+ai.className="msg ai";
+
+ai.innerText="收到：" + text;
+
+chat.appendChild(ai);
+
+
+
+chat.scrollTop=chat.scrollHeight;
+
+
+}
 let key=localStorage.getItem("key");
 
 let model=localStorage.getItem("model");
